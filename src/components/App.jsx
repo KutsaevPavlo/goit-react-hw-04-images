@@ -4,16 +4,15 @@ import { useState } from 'react';
 import css from './App.module.css';
 
 export default function App() {
-  // const [materials, setMaterials] = useState([]);
-  const [searchimg, setSearchimg] = useState('');
+  const [newsearchimg, setNewsearchimg] = useState('');
   const [page, setPage] = useState(1);
 
   const incrementPage = () => {
     setPage(prevState => prevState + 1);
   };
 
-  const handlFormSubmit = searchimg => {
-    setSearchimg(searchimg);
+  const handlFormSubmit = newsearchimg => {
+    setNewsearchimg(newsearchimg);
     setPage(1);
   };
 
@@ -23,7 +22,7 @@ export default function App() {
         <Searchbar handlFormSubmirt={handlFormSubmit} />
         <ImageGallery
           page={page}
-          searchimg={searchimg}
+          newsearchimg={newsearchimg}
           incrementPage={incrementPage}
         />
       </div>
