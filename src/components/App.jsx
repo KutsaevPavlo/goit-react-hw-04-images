@@ -1,29 +1,30 @@
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Searchbar } from './Searchbar/Searchbar';
-import { Component } from 'react';
+import { useState } from 'react';
 import css from './App.module.css';
 
 export default function App() {
-  const [materials, setMaterials] = useState([]);
+  // const [materials, setMaterials] = useState([]);
   const [searchimg, setSearchimg] = useState('');
   const [page, setPage] = useState(1);
 
-  incrementPage = () => {
-    this.setState(prevState => ({ page: prevState.page + 1 }));
+  const incrementPage = () => {
+    setPage(prevState => prevState + 1);
   };
 
-  handlFormSubmit = searchimg => {
-    this.setState({ searchimg, page: 1 });
+  const handlFormSubmit = searchimg => {
+    setSearchimg(searchimg);
+    setPage(1);
   };
 
   return (
     <section className={css.App}>
       <div>
-        <Searchbar handlFormSubmirt={this.handlFormSubmit} />
+        <Searchbar handlFormSubmirt={handlFormSubmit} />
         <ImageGallery
-          page={this.state.page}
-          searchimg={this.state.searchimg}
-          incrementPage={this.incrementPage}
+          page={page}
+          searchimg={searchimg}
+          incrementPage={incrementPage}
         />
       </div>
     </section>
